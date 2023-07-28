@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_name">
+    
+    <xacro:include filename="inertial_macros.xacro"/>
+
+    <material name="white">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+    </material>
+
+    <material name="orange">
+        <color rgba="1.0 0.3 0.1 1.0"/>
+    </material>
+
+    <material name="blue">
+        <color rgba="0.2 0.2 1.0 1.0"/>
+    </material>
+
+    <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+    </material>
+
+    <!-- Base Link -->
+    <link name="base_link">
+    </link>
+
+    <joint name="chassis_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="chassis"/>
+        <axis xyz="0.0 0.0 0.0"/>
+        <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
+    </joint>
+
+    <!-- Chassis Link-->
+    <link name="chassis">
+        <visual>
+            <origin xyz="0.0 0.0 0.01" rpy="0.0 0.0 0.0"/>
+            
+            <geometry>
+                <box size=".3 0.2 0.035"/>
+            </geometry>
+
+            <material name="white">
+                <color rgba="0.0 0.0 0.0 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <!--  Front Left Wheel Link-->
+    <joint name="front_left_wheel_joint" type="continuous">
+        
+        <parent link="base_link"/>
+        <child link="front_left_wheel"/>
+        <origin xyz="0.1 0.118 0" rpy="-1.57 0.0 0.0"/>
+        <axis xyz="0.0 0.0 -0.1"/>
+        
+            
+    </joint>
+
+    <link name="front_left_wheel">
+        <visual> 
+            <geometry>
+                <cylinder radius=".035" length="0.035"/>
+            </geometry>
+
+            <material name="orange">
+            </material>
+        </visual>
+    </link>
+    
+
+    <!-- Front Right Wheel Link -->
+    <joint name="front_right_wheel_joint" type="continuous">
+        
+        <parent link="base_link"/>
+        <child link="front_right_wheel"/>
+        <origin xyz="0.1 -0.118 0.0" rpy="-1.57 0.0 0.0"/>
+        <axis xyz="0.0 0.0 -0.1"/>
+            
+    </joint>
+
+    <link name="front_right_wheel">
+        <visual>
+            
+            <geometry>
+                <cylinder radius=".035" length="0.035"/>
+            </geometry>
+
+            <material name="orange">
+                <color rgba="0.0 0.0 0.0 1.0"/>
+            </material>
+        </visual>
+    </link>
+    
+
+    <!-- Back Left Wheel Link  -->
+    <joint name="back_left_wheel_joint" type="continuous">
+        
+        <parent link="base_link"/>
+        <child link="back_left_wheel"/>
+
+        <origin xyz="-0.1 0.118 0.0" rpy="-1.57 0.0 0.0"/>
+        <axis xyz="0.0 0.0 -0.1"/>
+            
+    </joint>
+
+    <link name="back_left_wheel">
+        <visual>
+            
+            <geometry>
+                <cylinder radius=".035" length="0.035"/>
+            </geometry>
+
+            <material name="orange">
+                <color rgba="0.0 0.0 0.0 1.0"/>
+            </material>
+        </visual>
+    </link>
+   
+
+    <!-- Back Right Wheel Link -->
+    <joint name="back_right_wheel_joint" type="continuous">
+        
+        <parent link="base_link"/>
+        <child link="back_right_wheel"/>
+
+        <origin xyz="-0.1 -0.118 0.0" rpy="-1.57 0.0 0.0"/>
+        <axis xyz="0.0 0.0 -0.1"/>
+            
+    </joint>
+
+    <link name="back_right_wheel">
+        <visual>
+            
+            <geometry>
+                <cylinder radius=".035" length="0.035"/>
+            </geometry>
+
+            <material name="orange">
+                <color rgba="0.0 0.0 0.0 1.0"/>
+            </material>
+        </visual>
+    </link> 
+    
+    </robot>
