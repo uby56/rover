@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="rover">
 
     <xacro:include filename="rover_core.xacro"/>
+
+    <xacro:include filename="front_wheel_gazebo_control.xacro"/>
+
+    <xacro:include filename="back_wheel_gazebo_control.xacro"/>
 
 </robot>
