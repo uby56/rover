@@ -68,7 +68,7 @@
 
     <gazebo reference = "chassis">
         <material>
-            Gazebo/Gray
+            Gazebo/White
         </material>
     </gazebo>
 
