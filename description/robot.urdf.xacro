@@ -3,6 +3,8 @@
 
     <xacro:include filename="rover_core.xacro"/>
 
+    <!-- <xacro:include filename="robot_core.xacro"/> -->
+
     <!-- <xacro:include filename="wheel_gazebo_control.xacro"/> -->
 
     <!-- <xacro:include filename="back_wheel_gazebo_control.xacro"/> -->

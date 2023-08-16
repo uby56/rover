@@ -9,7 +9,7 @@
     <xacro:property name="rover_mass" value="1.0"/>
     <xacro:property name="wheel_radius" value="0.036"/>
     <xacro:property name="wheel_thickness" value="0.037"/>
-    <xacro:property name="wheel_mass" value="0.05"/>
+    <xacro:property name="wheel_mass" value="0.04"/>
     
 
     <material name="white">
@@ -47,7 +47,7 @@
     <!-- Chassis Link-->
     <link name="chassis">
         <visual>
-            <origin xyz="0.0 0.0 0.01" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 ${rover_height/2}" rpy="0.0 0.0 0.0"/>
             
             <geometry>
                 <box size="${rover_length} ${rover_width} ${rover_height}"/>
@@ -59,14 +59,14 @@
         </visual>
 
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.01" rpy="0.0 0.0 0.0"/>
             <geometry>
                 <box size="${rover_length} ${rover_width} ${rover_height}"/>
             </geometry>
         </collision>
 
         <xacro:inertial_box mass = "0.5"  x = "${rover_length}" y = "${rover_width}" z = "${rover_height}">
-            <origin xyz="0.0 0.0 0.01" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 ${rover_height/2}" rpy="0.0 0.0 0.0"/>
             
         </xacro:inertial_box>
     </link>
@@ -95,22 +95,10 @@
                 <box size=".02 0.02 0.02"/>
             </geometry>
 
-            <material name="Gray">
+            <material name="blue">
                 <color rgba="0.3 0.3 0.3 1.0"/>
             </material>
         </visual>
-
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <box size="0.3 0.2 0.035"/>
-            </geometry>
-        </collision>
-
-        <xacro:inertial_box mass = "0.5"  x = "0.3" y = "0.2" z = "0.035">
-            <origin xyz="0.0 0.0 0.01" rpy="0.0 0.0 0.0"/>
-            
-        </xacro:inertial_box>
     </link>
 
     <gazebo reference = "Front">
@@ -124,7 +112,7 @@
         
         <parent link="base_link"/>
         <child link="front_left_wheel"/>
-        <origin xyz="0.075 0.119 0.0" rpy="-1.57 0.0 0.0"/>
+        <origin xyz="0.075 0.140 0.0" rpy="1.57 0.0 0.0"/>
         <axis xyz="0.0 0.0 -0.1"/>
         
             
@@ -144,7 +132,7 @@
 
         <collision>
             <geometry>
-                 <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+                <sphere  radius="${wheel_radius}"/>
             </geometry>
         </collision>
 
@@ -166,7 +154,7 @@
         
         <parent link="base_link"/>
         <child link="front_right_wheel"/>
-        <origin xyz="0.075 -0.119 0.0" rpy="1.57 0.0 0.0"/>
+        <origin xyz="0.075 -0.140 0.0" rpy="1.57 0.0 0.0"/>
         <axis xyz="0.0 0.0 -0.1"/>
             
     </joint>
@@ -175,7 +163,7 @@
         <visual>
             
             <geometry>
-                 <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
             </geometry>
 
             <material name="orange">
@@ -185,7 +173,7 @@
 
         <collision>
             <geometry>
-                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+                <sphere  radius="${wheel_radius}" />
             </geometry>
         </collision>
 
@@ -208,7 +196,7 @@
         <parent link="base_link"/>
         <child link="back_left_wheel"/>
 
-        <origin xyz="-0.075 0.119 0.0" rpy="-1.57 0.0 0.0"/>
+        <origin xyz="-0.075 0.140 0.0" rpy="1.57 0.0 0.0"/>
         <axis xyz="0.0 0.0 -0.1"/>
             
     </joint>
@@ -227,14 +215,13 @@
 
         <collision>
             <geometry>
-                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+                <sphere  radius="${wheel_radius}"/>
             </geometry>
         </collision>
 
         <xacro:inertial_cylinder mass="${wheel_mass}" radius="${wheel_radius}" length="${wheel_thickness}">
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </xacro:inertial_cylinder>
-
     </link>
 
     <gazebo reference = "back_left_wheel">
@@ -250,7 +237,7 @@
         <parent link="base_link"/>
         <child link="back_right_wheel"/>
 
-        <origin xyz="-0.075 -0.119 0.0" rpy="1.57 0.0 0.0"/>
+        <origin xyz="-0.075 -0.140 0.0" rpy="1.57 0.0 0.0"/>
         <axis xyz="0.0 0.0 -0.1"/>
             
     </joint>
@@ -269,7 +256,7 @@
 
         <collision>
             <geometry>
-                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+                <sphere  radius="${wheel_radius}"/>
             </geometry>
         </collision>
 
