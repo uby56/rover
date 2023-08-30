@@ -9,6 +9,6 @@
 
     <!-- <xacro:include filename="back_wheel_gazebo_control.xacro"/> -->
     
-    <xacro:include filename="ros2_control.xacro"/>
+    <xacro:include filename="ros2_real_bot_control.xacro"/>
 
 </robot>
